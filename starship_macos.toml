@@ -1,8 +1,8 @@
 # [](bg:#1C3A5E fg:#7DF9AA)\
 
-format = """\
+format = """
 $python\
-[ ](fg:#FFFFFF)\
+[󰀵 ](fg:#FFFFFF)\
 [](fg:#1C3A5E)\
 $time\
 [ ](fg:#1C3A5E)\
