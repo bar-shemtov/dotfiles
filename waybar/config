@@ -1,0 +1,145 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+
+    "height": 42, // Waybar height (to be removed for auto height)
+
+    // "width": 1280, // Waybar width
+
+    "spacing": 4, // Gaps between modules (4px)
+
+    "margin": "5 20 -15 20", // Margins (top right bottom left)
+
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/os_button",
+        "custom/sep2",
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "tray",
+        "idle_inhibitor",
+        "custom/bluetooth_devices",
+        "pulseaudio",
+        "network",
+        "hyprland/language",
+        "clock",
+        // "custom/gamingmode_button",
+        "custom/powermenu"
+        ],
+    // Modules configuration
+
+    "custom/sep": {
+        "format": " "
+      },
+
+    "custom/sep2": {
+        "format": ""
+      },
+
+    "custom/gamingmode_button": {
+        "format": "    ",
+        "on-click": "~/.config/wofi/scripts/wofisteamdeckmode.sh",
+        "tooltip": false
+    },
+
+    "custom/os_button": {
+        "format": "",
+        "on-click": "pkill wofi || wofi --show drun -i -G --allow-images --width 18% --prompt 'Search:'",
+        "tooltip": false
+    },
+
+    "custom/powermenu": {
+        "on-click": "~/.config/wofi/scripts/wofipowermenu.py",
+        "format": "",
+        "tooltip": false
+      },
+
+    "custom/bluetooth_devices": {
+        "format": "",
+        "justify": "center",
+        "tooltip": false,
+        "on-click": "~/.config/wofi/scripts/wofibluetooth.sh"
+    },
+    
+    "wlr/taskbar": {
+        "format": "{icon} {title:.17}",
+        "icon-size": 28,
+        "spacing": 3,
+        "on-click-middle": "close",
+        "tooltip-format": "{title}",
+        "ignore-list": [],
+        "on-click": "activate"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}:{icon}",
+        "on-scroll-up": "hyprctl dispatch workspace r+1",
+        "on-scroll-down": "hyprctl dispatch workspace r-1",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+    
+    "hyprland/language": {
+        "format": "<span foreground='#89dceb'></span> {}",
+        "format-en": "US",
+        "format-il": "IL",
+        "on-click": "hyprctl switchxkblayout 2.4g-dongle-keyboard next"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+        "activated": "",
+        "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10,
+        "show-passive-items": "true"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "network": {
+        "format-wifi": "<span foreground='#89dceb'></span> {essid} ({signalStrength}%)",
+        "format-ethernet": "<span foreground='#89dceb'></span> {ipaddr}/{cidr}",
+        "tooltip-format": "<span foreground='#89dceb'></span> {ifname} via {gwaddr}",
+        "format-linked": "<span foreground='#89dceb'></span> {ifname} (No IP)",
+        "format-disconnected": "<span foreground='#ed8796'></span> Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "<span foreground='#89dceb'></span> {volume}%",
+        "format-muted": "<span foreground='#ed8796'></span> {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        // "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [" ", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    }
+}

@@ -1,0 +1,63 @@
+# [](bg:#1C3A5E fg:#7DF9AA)\
+
+format = """\
+$python\
+[ ](fg:#FFFFFF)\
+[](fg:#1C3A5E)\
+$time\
+[ ](fg:#1C3A5E)\
+$directory(fg:#1C3A5E)\
+$character\
+"""
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#1C3A5E bg:#FCF392"
+
+[git_status]
+format = '[$all_status]($style)'
+style = "fg:#1C3A5E bg:#FCF392"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[hg_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"
+
+[character]
+success_symbol = '[➜](#02ff00) '
+error_symbol = '[✗](#E84D44) '
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+
+[directory]
+  truncation_length = 3
+  truncation_symbol = '…/'
+  home_symbol = ''
+  style = '#7DF9AA'
+  read_only = ' 󰌾'
+  read_only_style = '#cfd0fd'
+
+[conda]
+symbol = " "
+style = "bg:#1C3A5E fg:#8DFBD2"
+format = "[[](fg:#1C3A5E)$symbol$environment]($style)[](fg:#1C3A5E) "
+
+[python]
+symbol = " "
+style = "fg:#7DF9AA"
+# bg:#1C3A5E
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
